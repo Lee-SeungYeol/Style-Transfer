@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 업로드</title>
+</head>
+<body>
+    <h1>이미지 업로드</h1>
+    <form enctype="multipart/form-data" method="POST" action="/upload">
+        <label for="image">이미지 선택:</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        <button type="submit">수행</button>
+    </form>
+    <form method="POST" action="/process">
+        <label for="user_input">숫자를 입력하세요:</label>
+        <input type="number" id="user_input" name="user_input">
+        <button type="submit">확인</button>
+      </form>
+
+    {% if success %}
+        <p style="color: green;">{{ success }}</p>
+    {% endif %}
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if image_url %}
+        <h2>처리된 이미지</h2>
+        <img src="{{ image_url }}" alt="결과 이미지" style="max-width: 500px;">
+    {% endif %}
+</body>
+</html>
