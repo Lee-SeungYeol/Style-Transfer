@@ -20,14 +20,14 @@ body {
 
 /* 제목 */
 h1, h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 40px;
+    font-size: 30px;
     color: #333;
 }
 
 /* 파일 업로드 */
 input[type="file"] {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 /* 화풍 선택 */
@@ -39,8 +39,8 @@ input[type="file"] {
 }
 
 .style-image {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border: 2px solid transparent;
     border-radius: 5px;
     cursor: pointer;
@@ -49,11 +49,11 @@ input[type="file"] {
 
 .style-image:hover {
     transform: scale(1.1);
-    border-color: #9259ee;
+    border-color: #fc5293;
 }
 
 .style-image.selected {
-    border-color: #4CAF50;
+    border-color: #fc5293;
     transform: scale(1.1);
 }
 
@@ -64,18 +64,18 @@ button {
     font-size: 16px;
     border-radius: 5px;
     border: none;
-    background-color: #b5bfff;
+    background-color: #fc5293;
     color: white;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #f4a9c7;
 }
 
 /* 결과 */
 img#result {
-    margin-top: 20px;
+    margin-top: 50px;
     max-width: 100%;
     height: auto;
     border: 1px solid #ddd;
