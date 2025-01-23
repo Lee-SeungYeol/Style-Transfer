@@ -39,8 +39,8 @@ input[type="file"] {
 }
 
 .style-image {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border: 2px solid transparent;
     border-radius: 5px;
     cursor: pointer;
