@@ -1,16 +1,19 @@
 let selectedStyle = null;
+let uploadedImage = null;
 
 function handleImageUpload() {
     const stylePreview = document.getElementById('stylePreview');
     const transformButton = document.getElementById('transformButton');
 
-    // 사진 업로드 후 화풍 선택 표시
-    stylePreview.style.display = "block";
-    transformButton.style.display = "block";
+    // 업로드된 이미지를 저장하고 화풍 선택 영역과 버튼을 활성화
+    uploadedImage = document.getElementById('upload').files[0];
+    if (uploadedImage) {
+        stylePreview.style.display = 'block';
+        transformButton.style.display = 'block';
+    }
 }
 
 function selectStyle(style) {
-    // 선택된 화풍 강조
     const styleImages = document.querySelectorAll('.style-image');
     styleImages.forEach((img) => img.classList.remove('selected'));
 
@@ -19,26 +22,28 @@ function selectStyle(style) {
         selectedImage.classList.add('selected');
     }
 
-    // 선택된 화풍 저장
     selectedStyle = style;
 }
 
 async function applyStyle() {
-    const fileInput = document.getElementById('upload');
-    const resultImage = document.getElementById('result');
-
-    if (!fileInput.files[0]) {
-        alert("Upload your image!");
+    if (!uploadedImage) {
+        alert("Please upload an image first!");
         return;
     }
 
     if (!selectedStyle) {
-        alert("Choose a style!");
+        alert("Please select a style!");
         return;
     }
 
+    // 로딩 중 메시지 표시
+    const loadingMessage = document.getElementById('loading');
+    const resultImage = document.getElementById('result');
+    loadingMessage.style.display = 'block';
+    resultImage.style.display = 'none';
+
     const formData = new FormData();
-    formData.append("file", fileInput.files[0]);
+    formData.append("file", uploadedImage);
     formData.append("style", selectedStyle);
 
     const response = await fetch("http://localhost:8000/transform", {
@@ -46,11 +51,13 @@ async function applyStyle() {
         body: formData
     });
 
+    loadingMessage.style.display = 'none';
+
     if (response.ok) {
         const blob = await response.blob();
         resultImage.src = URL.createObjectURL(blob);
-        resultImage.style.display = "block";
+        resultImage.style.display = 'block';
     } else {
-        alert("Error: Image conversion failed..");
+        alert("Error: Image conversion failed.");
     }
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Painting Style</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+    <div class="style-container">
+        <h1>Choose a Painting Style</h1>
+        <div class="style-options">
+            <img src="s1.jpg" alt="painting style 1" class="style-image" onclick="selectStyle('style1')">
+            <img src="s2.jpg" alt="painting style 2" class="style-image" onclick="selectStyle('style2')">
+            <img src="s3.jpg" alt="painting style 3" class="style-image" onclick="selectStyle('style3')">
+            <img src="s4.jpg" alt="painting style 4" class="style-image" onclick="selectStyle('style4')">
+            <img src="s5.jpg" alt="painting style 5" class="style-image" onclick="selectStyle('style5')">
+            <img src="s7.jpg" alt="painting style 7" class="style-image" onclick="selectStyle('style7')">
+            <img src="s8.jpg" alt="painting style 8" class="style-image" onclick="selectStyle('style8')">
+            <img src="s9.jpg" alt="painting style 9" class="style-image" onclick="selectStyle('style9')">
+            <img src="s10.jpg" alt="painting style 10" class="style-image" onclick="selectStyle('style10')">
+        </div>
+
+        <!-- 선택된 화풍이 없으면 버튼 비활성화 -->
+        <button id="transformButton" onclick="applyStyle()" style="display: none;">Apply Style</button>
+    </div>
+
+    <script src="project.js"></script>
+</body>
+
+</html>

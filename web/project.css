@@ -1,41 +1,59 @@
+/* 기본 설정 */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #d2f1ff;
+    background: linear-gradient(135deg, #d2f1ff, #fc5293);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    text-align: center;
 }
 
 .container {
-    text-align: center;
-    background: #ffffff;
-    padding: 50px 70px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px 50px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 900px;
 }
 
 /* 제목 */
 h1, h2 {
-    margin-bottom: 40px;
-    font-size: 30px;
+    margin-bottom: 20px;
+    font-size: 35px;
     color: #333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+h1:hover {
+    transform: scale(1.1);
 }
 
 /* 파일 업로드 */
 input[type="file"] {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* 화풍 선택 */
+.style-preview {
+    margin-bottom: 40px;
+}
+
 .style-options {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin: 20px 0;
+    flex-wrap: wrap;
 }
 
 .style-image {
@@ -44,7 +62,8 @@ input[type="file"] {
     border: 2px solid transparent;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .style-image:hover {
@@ -60,24 +79,75 @@ input[type="file"] {
 /* 변환 버튼 */
 button {
     margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 25px;
+    font-size: 18px;
     border-radius: 5px;
     border: none;
     background-color: #fc5293;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #f4a9c7;
+    transform: scale(1.05);
 }
 
-/* 결과 */
+/* 로딩 애니메이션 */
+.loading {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* 결과 이미지 */
 img#result {
     margin-top: 50px;
     max-width: 100%;
     height: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 40px;
+    }
+
+    h1, h2 {
+        font-size: 28px;
+    }
+
+    .style-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 30px;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    .style-image {
+        width: 70px;
+        height: 70px;
+    }
+
+    button {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
 }
