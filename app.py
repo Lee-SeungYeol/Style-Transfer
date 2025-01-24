@@ -15,17 +15,17 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 @app.route('/')
 def index():
     # 기본 페이지 렌더링
-    return render_template('test.html')
+    return render_template('project.html')
 
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'image' not in request.files:
-        return render_template('test.html', error="이미지를 선택하세요!")
+        return render_template('project.html', error="이미지를 선택하세요!")
     
     file = request.files['image']
     if file.filename == '':
-        return render_template('test.html', error="파일 이름이 비어 있습니다!")
+        return render_template('project.html', error="파일 이름이 비어 있습니다!")
 
     if file:
         # 업로드된 파일 저장
@@ -39,7 +39,7 @@ def upload_file():
         #timestamp = datetime.now().strftime('%Y%m%d%H%M%S%f')
 
         # HTML로 전달: 처리된 이미지 표시 (쿼리 문자열 추가)
-        return render_template('test.html', image_url=f'/outputs/result.jpg', success="이미지가 처리되었습니다!")
+        return render_template('project.html', image_url=f'/outputs/result.jpg', success="이미지가 처리되었습니다!")
 
 
 @app.route('/outputs/<filename>')
