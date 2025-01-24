@@ -13,7 +13,19 @@
         <h1>AI Painting Style Transfer</h1>
 
         <!-- 사진 업로드 -->
-        <input type="file" id="upload" accept="image/*" onchange="handleImageUpload()">
+        <form enctype="multipart/form-data" method="POST" action="/upload">
+            <input type="file" id="upload" name="image" accept="image/*" onchange="handleImageUpload()">
+            <button type="submit">Upload</button>
+        </form>
+        <!-- <form enctype="multipart/form-data" method="POST" action="/upload">
+            <input type="file" id="upload" name="image" accept="image/*">
+            <button type="submit">Upload</button>
+        </form> -->     
+
+        <div id="previewContainer" style="display: none;">
+            <h2>Preview</h2>
+            <img id="previewImage" src="" alt="Uploaded Preview" style="max-width: 100%; border-radius: 8px;">
+        </div>        
         
         <!-- 화풍 선택 버튼 -->
         <div id="stylePreview" class="style-preview" style="display: none;">
@@ -36,10 +48,16 @@
         <!-- 변환 버튼 -->
         <button id="transformButton" onclick="applyStyle()" style="display: none;">Change Style</button>
 
+        <button onclick="resetSelection()">Reset</button>
+
+
         <!-- 변환 결과 -->
         <div id="loading" class="loading" style="display: none;">Loading...</div>
         <img id="result" src="" alt="result image" style="display: none;">
     </div>
+
+    <a id="downloadButton" href="#" download="styled-image.png" style="display: none;">Download Image</a>
+
 
     <script src="project.js"></script>
 </body>

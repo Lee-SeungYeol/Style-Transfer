@@ -102,7 +102,18 @@ button:hover {
     color: #333;
     font-weight: bold;
     margin-top: 20px;
+    animation: blink 1.5s infinite;
 }
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 
 /* 결과 이미지 */
 img#result {
@@ -111,6 +122,31 @@ img#result {
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+#previewContainer {
+    margin-top: 20px;
+}
+
+#previewImage {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#downloadButton {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#downloadButton:hover {
+    background-color: #45a049;
 }
 
 /* 반응형 디자인 */
