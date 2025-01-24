@@ -4,60 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Painting Style Transfer</title>
+    <title>Painting Style Change</title>
     <link rel="stylesheet" href="project.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>AI Painting Style Transfer</h1>
+    <header class="header">
+        <h1>style change</h1>
+        <p>Transform your photos into masterpieces</p>
+    </header>
 
+    <main class="container">
         <!-- 사진 업로드 -->
-        <form enctype="multipart/form-data" method="POST" action="/upload">
-            <input type="file" id="upload" name="image" accept="image/*" onchange="handleImageUpload()">
-            <button type="submit">Upload</button>
-        </form>
-        <!-- <form enctype="multipart/form-data" method="POST" action="/upload">
-            <input type="file" id="upload" name="image" accept="image/*">
-            <button type="submit">Upload</button>
-        </form> -->     
+        <section class="upload-section">
+            <h2>Upload Your Photo</h2>
+            <input type="file" id="upload" accept="image/*" onchange="handleImageUpload()">
+            <button type="button" class="btn" onclick="uploadImage()">Upload</button>
 
-        <div id="previewContainer" style="display: none;">
-            <h2>Preview</h2>
-            <img id="previewImage" src="" alt="Uploaded Preview" style="max-width: 100%; border-radius: 8px;">
-        </div>        
-        
-        <!-- 화풍 선택 버튼 -->
-        <div id="stylePreview" class="style-preview" style="display: none;">
-            <h2>Select a Style</h2>
-            <div class="style-options">
-                <img src="s1.jpg" alt="style1" class="style-image" onclick="selectStyle('style1')">
-                <img src="s2.jpg" alt="style2" class="style-image" onclick="selectStyle('style2')">
-                <img src="s3.jpg" alt="style3" class="style-image" onclick="selectStyle('style3')">
-                <img src="s4.jpg" alt="style4" class="style-image" onclick="selectStyle('style4')">
-
-                <img src="s5.jpg" alt="style5" class="style-image" onclick="selectStyle('style5')">
-                <img src="s7.jpg" alt="style7" class="style-image" onclick="selectStyle('style7')">
-                <img src="s8.jpg" alt="style8" class="style-image" onclick="selectStyle('style8')">
-
-                <img src="s9.jpg" alt="style9" class="style-image" onclick="selectStyle('style9')">
-                <img src="s10.jpg" alt="style10" class="style-image" onclick="selectStyle('style10')">
+            <!-- 업로드된 이미지 미리보기 -->
+            <div id="previewContainer" style="display: none;">
+                <h3>Your Uploaded Image</h3>
+                <img id="previewImage" src="" alt="Uploaded Preview">
+                <label for="PreviewSize">Adjust Preview Size</label>
+                <input type="range" id="PreviewSize" min ="50" max="300" value="120" onchange="adjustPreviewSize()">
             </div>
-        </div>
+        </section>
+
+        <!-- 화풍 선택 -->
+        <section id="stylePreview" class="style-preview" style="display: none;">
+            <h2>Select a Style</h2>
+            <div class="style-art">
+                <div class="style-item">
+                    <img src="style-image/s1.jpg" alt="Style 1" class="style-image" onclick="selectStyle('style1')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s2.jpg" alt="Style 2" class="style-image" onclick="selectStyle('style2')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s3.jpg" alt="Style 3" class="style-image" onclick="selectStyle('style3')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s4.jpg" alt="Style 4" class="style-image" onclick="selectStyle('style4')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s5.jpg" alt="Style 5" class="style-image" onclick="selectStyle('style5')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s7.jpg" alt="Style 7" class="style-image" onclick="selectStyle('style7')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s8.jpg" alt="Style 8" class="style-image" onclick="selectStyle('style8')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s9.jpg" alt="Style 9" class="style-image" onclick="selectStyle('style9')">
+                </div>
+
+                <div class="style-item">
+                    <img src="style-image/s10.jpg" alt="Style 10" class="style-image" onclick="selectStyle('style10')">
+                </div>
+            </div>
+        </section>
 
         <!-- 변환 버튼 -->
-        <button id="transformButton" onclick="applyStyle()" style="display: none;">Change Style</button>
+        <button id="transformButton" class="btn transform-btn" onclick="applyStyle()" style="display: none;">Transform</button>
 
-        <button onclick="resetSelection()">Reset</button>
+        <!-- 로딩과 결과 -->
+        <div id="loading" class="loading" style="display: none;">Transforming your image...</div>
+        <img id="result" src="" alt="Result Image" style="display: none;">
+    </main>
 
-
-        <!-- 변환 결과 -->
-        <div id="loading" class="loading" style="display: none;">Loading...</div>
-        <img id="result" src="" alt="result image" style="display: none;">
-    </div>
-
-    <a id="downloadButton" href="#" download="styled-image.png" style="display: none;">Download Image</a>
-
+    <footer class="footer">
+        <p>© 2025 Style Transfer</p>
+    </footer>
 
     <script src="project.js"></script>
 </body>
